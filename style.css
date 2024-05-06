@@ -7,3 +7,21 @@
 body {
     background-color: rgb(243, 191, 255);
 }
+
+#quizz {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.answer {
+   
+    column-count: 2;
+    flex-direction: column;
+    
+    width: 100%;
+    height: 100%;
+    color: tomato;
+}
