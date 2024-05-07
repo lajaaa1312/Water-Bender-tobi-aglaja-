@@ -1,4 +1,3 @@
-console.log('Hello, world!');
 
 const charactersUrl = "https://last-airbender-api.fly.dev/api/v1/characters";
 
@@ -12,6 +11,9 @@ let scoreWater = 0;
 let scoreEarth = 0;
 let scoreAir = 0;
 
+let questionCounter = 0;
+
+
 const quizz = document.querySelector("#quizz");
 
 let questions = [
@@ -19,45 +21,144 @@ let questions = [
         questionText: "What is your preferred time of day?",
         answerText: ["Noon","Night","Dusk","Dawn"],
         answerElement: ["fire","water","earth","air"]
+     },
+
+     {
+        questionText: "What is your life philosophy?",
+        answerText: ["Finding strength through calmness and steadfastness","Achieving harmony through adaptation and flow","Experiencing freedom through lightness and letting go","Attaining power through passion and determination"],
+        answerElement: ["earth","water","air","fire"]
+     },
+
+     {
+        questionText: "Which animal appeals to you the most?",
+        answerText: ["Bear","Whale","Eagle","Dragon"],
+        answerElement: ["earth","water","air","fire"]
+     },
+     {
+        questionText: "How would you behave in a conflict?",
+        answerText: [" attempt to mediate and find a compromise","I seek a diplomatic solution","I withdraw and try to calm the situation","I fight for my convictions and defend myself"],
+        answerElement: ["earth","water","air","fire"]
+     },
+     {
+        questionText: "What is your greatest strength??",
+        answerText: ["Fortitude and stability","Adaptability and flexibility","Peacefulness and equilibrium","Passion and determination"],
+        answerElement: ["fire","water","earth","air"]
+     },
+     
+     {
+        questionText: "How do you react in stressful situations?",
+        answerText: ["I remain calm and composed"," I seek solutions to improve the situation","I retreat within myself and seek inner balance","I act impulsively and quickly"],
+        answerElement: ["fire","water","earth","air"]
      }
+
+    
 ];
+function shuffleQuestions(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+// Fragen mischen
+shuffleQuestions(questions);
 
 
 
-function createItem(questionList) {
+
+
+function createItem(question) {
     let item = document.createElement('div');
     item.classList.add('question');
     item.innerHTML = `
-    <h2>${questionList[0].questionText}</h2>
+    <h2>${question.questionText}</h2>
 
     <div class="answer">
-    <button>${questionList[0].answerText[0]}</button>
-    <button>${questionList[0].answerText[1]}</button>
-    <button>${questionList[0].answerText[2]}</button>
-    <button>${questionList[0].answerText[3]}</button>
+    <button>${question.answerText[0]}</button>
+    <button>${question.answerText[1]}</button>
+    <button>${question.answerText[2]}</button>
+    <button>${question.answerText[3]}</button>
     </div>
     
     `;
     quizz.appendChild(item);
+
+    const buttons = document.querySelectorAll('.answer button');
+    // -> create directly
+    buttons.forEach((button, index) => {
+        button.addEventListener('click', function (e) {
+            // lösche die letzte Frage
+            const lastQuestion = document.querySelector('.question');
+            if (lastQuestion) { // wenn es eine Frage gibt, dann lösche sie
+                lastQuestion.remove();
+            }
+
+            questionCounter++;
+
+            const answerElement = question.answerElement[index];
+
+            if (answerElement === 'fire') {
+                scoreFire++;
+            } else if (answerElement === 'water') {
+                scoreWater++;
+            } else if (answerElement === 'earth') {
+                scoreEarth++;
+            } else if (answerElement === 'air') {
+                scoreAir++;
+            }
+
+            console.log('Scores:', scoreFire, scoreWater, scoreEarth, scoreAir);
+
+            if (questionCounter >= questions.length) {
+                getFinalElement();
+                return;
+            } else {
+                createItem(questions[questionCounter]);
+            }
+        });
+    });
+}
+
+function getFinalElement() {
+    const maxScore = Math.max(scoreFire, scoreWater, scoreEarth, scoreAir);
+    let element = '';
+    if (maxScore === scoreFire) {
+        element = 'fire';
+    } else if (maxScore === scoreWater) {
+        element = 'water';
+    } else if (maxScore === scoreEarth) {
+        element = 'earth';
+    } else if (maxScore === scoreAir) {
+        element = 'air';
+    }
+    
+    fetch(`https://last-airbender-api.fly.dev/api/v1/characters?weapon=Air`)
+        .then(response => response.json())
+        .then(data => {
+            displayResults(data);
+        })
+        .catch(error => console.error('Error fetching element:', error));
 }
 
 
 
-console.log(questions[0].questionText);
+function displayResults(elementData) {
+    let resultElement = document.createElement('div');
+    resultElement.innerHTML = `
+        <h2>Results</h2>
+        <p>Element: ${elementData.element}</p>
+        <p>Description: ${elementData.description}</p>
+    `;
+    quizz.appendChild(resultElement);
+}
 
-createItem(questions);
+    
+  
+
+createItem(questions[0]);
 
 
-// function createItem(cocktail) {                                      //wir jedes drinks element im cocktails array 
-//     let item = document.createElement('div');                               //wir bereiten einen container vor in dem die daten dann angezeigt werden können im DOM/HTML (noch nicht geschrieben, nur vorbereitet) anders: wir erstellen ein neues div
-//     item.classList.add('drink');                                             //wir geben dem container eine klasse, damit wir ihn später stylen können
-//     item.innerHTML = `
-//     <h2>${cocktail.strDrink}</h2>
-//     <img src="${cocktail.strDrinkThumb}" alt="${cocktail.strDrink}" 
-//     <p>${cocktail.strInstructions}</p>
-//     `;                                                                      //wir schreiben die informationen des drinks in den container
-//     cocktailApp.appendChild(item);  
-// }
+
 
 
 
