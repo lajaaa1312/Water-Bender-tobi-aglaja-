@@ -1,3 +1,4 @@
+/* CSS code with centered "Start Quiz" button */
 * {
     margin: 0;
     padding: 0;
@@ -81,6 +82,20 @@ h2 {
     width: 100%;
     height: auto;
     border-radius: 4px;
+}
+
+/* Center Start Quiz button */
+#landing-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#start-button {
+    
+    color: rgb(0, 0, 0);
+    background-color: white;
+    
 }
 
 /* Responsive design */
