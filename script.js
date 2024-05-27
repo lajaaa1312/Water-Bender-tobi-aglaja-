@@ -1,20 +1,17 @@
 const charactersUrl = "https://last-airbender-api.fly.dev/api/v1/characters";
 
-<<<<<<< HEAD
 
 
 console.log(fetchData(charactersUrl));
 
 //Variablen für die Scores der Elemente
 
-=======
-// Variables for element scores
->>>>>>> a46dd800961d0c0c6f6df1efc0a255da304d7210
 let scoreFire = 0;
 let scoreWater = 0;
 let scoreEarth = 0;
 let scoreAir = 0;
 let questionCounter = 0;
+
 const quizzContainer = document.querySelector("#quizz");
 const landingPage = document.getElementById('landing-page');
 const quizContainer = document.getElementById('quiz-container');
