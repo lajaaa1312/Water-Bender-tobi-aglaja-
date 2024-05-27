@@ -19,8 +19,8 @@ const quizz = document.querySelector("#quizz");
 let questions = [
     {
         questionText: "What is your preferred time of day?",
-        answerText: ["Noon","Night","Dusk","Dawn"],
-        answerElement: ["fire","water","earth","air"]
+        answerText:  ["Dusk", "Night", "Dawn", "Noon"],
+        answerElement: ["earth","water","air","fire"]
      },
 
      {
@@ -31,7 +31,7 @@ let questions = [
 
      {
         questionText: "Which animal appeals to you the most?",
-        answerText: ["Bear","Whale","Eagle","Dragon"],
+        answerText: ["Mole","Whale","Eagle","Dragon"],
         answerElement: ["earth","water","air","fire"]
      },
      {
@@ -41,18 +41,18 @@ let questions = [
      },
      {
         questionText: "What is your greatest strength??",
-        answerText: ["Fortitude and stability","Adaptability and flexibility","Peacefulness and equilibrium","Passion and determination"],
-        answerElement: ["fire","water","earth","air"]
+        answerText: ["Fortitude","Adaptability","Peacefulness","Passion"],
+        answerElement: ["earth","water","air","fire"]
      },
      
      {
         questionText: "How do you react in stressful situations?",
-        answerText: ["I remain calm and composed"," I seek solutions to improve the situation","I retreat within myself and seek inner balance","I act impulsively and quickly"],
-        answerElement: ["fire","water","earth","air"]
+        answerText: ["I make a plan to handle the situation", " I try to adapt to the circumstances ","I take my time and stay calm","I take quick action"],
+        answerElement: ["earth","water","air","fire"]
      }
-
-    
+  
 ];
+
 function shuffleQuestions(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -82,6 +82,10 @@ function createItem(question) {
     
     `;
     quizz.appendChild(item);
+    
+    console.log (question)
+
+
 
     const buttons = document.querySelectorAll('.answer button');
     // -> create directly
@@ -141,26 +145,35 @@ function getFinalElement() {
             displayResults(data, element);
         })
         .catch(error => console.error('Error fetching element:', error));
+
+    return element;
 }
 
 
 
-function displayResults(elementData, element) {
+function displayResults(element) {
+    
+    let n = "";
+    if (element === 'air' || element === 'earth') {
+        n = "n";
+        console.log(n);
+    }
+    
     let resultElement = document.createElement('div');
     resultElement.innerHTML = `
-
-        <h1>Your element is ${element}</h1> 
+        <h1>Your'e a${n} ${element}bender </h1> 
     `;
 
-quizz.appendChild(resultElement);
+    quizz.appendChild(resultElement);
 
-function displayBenders(elementData, element) {
+}
+
+
+function displayBenders( ) {
     let resultBenders = document.createElement('div'); 
     resultBenders.innerHTML = `
         <h1> These are your fellow Benders </h1>
-        <ul>
-            ${elementData.characters.map(character => `<li>${character}</li>`).join('')}
-        </ul>
+        <p> 
     `;
 
     quizz.appendChild(resultBenders);
@@ -184,7 +197,8 @@ async function fetchData(charactersUrl) {
     try {
         let response = await fetch(charactersUrl);
         let data = await response.json();
-        return data;                                                        //gefetchte daten aus der Funktion ausgeben, damit man sie weiter verwenden kann
+        return data;
+        //gefetchte daten aus der Funktion ausgeben, damit man sie weiter verwenden kann
     }
     catch (error) {
         console.log(error);
