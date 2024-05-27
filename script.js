@@ -2,6 +2,7 @@
 const charactersUrl = "https://last-airbender-api.fly.dev/api/v1/characters";
 
 
+
 console.log(fetchData(charactersUrl));
 
 //Variablen für die Scores der Elemente
@@ -12,6 +13,16 @@ let scoreEarth = 0;
 let scoreAir = 0;
 
 let questionCounter = 0;
+const quizzContainer = document.querySelector("#quizz");
+const landingPage = document.getElementById('landing-page');
+const quizContainer = document.getElementById('quiz-container');
+const startButton = document.getElementById('start-button');
+
+startButton.addEventListener('click', () => {
+    landingPage.style.display = 'none';
+    quizContainer.style.display = 'block';
+    document.body.style.background = 'rgba(255, 255, 255, 0.8)'; // Hintergrund ändern
+});
 
 
 const quizz = document.querySelector("#quizz");
