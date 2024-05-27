@@ -132,24 +132,38 @@ function getFinalElement() {
         element = 'air';
     }
     
-    fetch(`https://last-airbender-api.fly.dev/api/v1/characters?weapon=Air`)
+    console.log('Element:', element);
+
+    
+    fetch(`https://last-airbender-api.fly.dev/api/v1/characters?weapon=${element}`)
         .then(response => response.json())
-        .then(data => {
-            displayResults(data);
+        .then(data => { console.log(data);
+            displayResults(data, element);
         })
         .catch(error => console.error('Error fetching element:', error));
 }
 
 
 
-function displayResults(elementData) {
+function displayResults(elementData, element) {
     let resultElement = document.createElement('div');
     resultElement.innerHTML = `
-        <h2>Results</h2>
-        <p>Element: ${elementData.element}</p>
-        <p>Description: ${elementData.description}</p>
+
+        <h1>Your element is ${element}</h1> 
     `;
-    quizz.appendChild(resultElement);
+
+quizz.appendChild(resultElement);
+
+function displayBenders(elementData, element) {
+    let resultBenders = document.createElement('div'); 
+    resultBenders.innerHTML = `
+        <h1> These are your fellow Benders </h1>
+        <ul>
+            ${elementData.characters.map(character => `<li>${character}</li>`).join('')}
+        </ul>
+    `;
+
+    quizz.appendChild(resultBenders);
 }
 
     
