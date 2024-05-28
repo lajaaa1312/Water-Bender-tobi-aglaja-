@@ -5,6 +5,17 @@
     box-sizing: border-box;
 }
 
+.title {
+    position: absolute;
+    top: 2%;
+    left: 5%;
+    font-size: 2em;
+    font-family: 'papyrus', cursive;
+    color: #000; /* Anpassung der Schriftfarbe nach Bedarf */
+    word-wrap: break-all;
+    width: 5%;
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -13,7 +24,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Hakturus', Arial, sans-serif;
+    font-family: 'Papyrus', cursive;
     background: url('assets/WEBASSETS/Avatar_world_map_EDITED 1.png') no-repeat center center fixed;
     background-size: contain;
 }
@@ -30,21 +41,13 @@ main {
     text-align: center;
 }
 
-/* Typography */
-h1, h2 {
-    font-family: 'Poppins', sans-serif;
-    color: black;
-    margin: 10px 0;
-}
-
 h1 {
-    font-size: 3em;
-    font-weight: 600;
-}
+    font-size: 1.5em;
+    margin: 10px 0;
+    font-family: 'Papyrus', cursive;
+    color: #004d40;
+    line-height: 1.2;
 
-h2 {
-    font-size: 2em;
-    font-weight: 400;
 }
 
 
@@ -144,29 +147,21 @@ h2 {
 
 
 /* Center Start Quiz button */
-#landing-page {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
-#start-button, #team-button {
-    background: linear-gradient(135deg, #edc60f, #d90404);
-    border: none;
-    border-radius: 50px;
-    color: white;
+
+#start-button {
+    position: absolute;
+    top: 40%;
+    left: 55%;
+    padding: 10px 40px;
+    font-size: 1.5em;
+    font-family: Papryus, cursive;
+    color: black; /* Schriftfarbe */
+    background-color:white; /* Hintergrundfarbe */
+    border: 2px solid black; /* Rahmen des Buttons */
+    text-align: center;
     cursor: pointer;
-    font-size: 18px;
-    padding: 15px 30px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
@@ -182,6 +177,22 @@ h2 {
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
     background: linear-gradient(135deg, #004d40, #004d40); /* Einheitliche Farbe beim Klicken */
     color: #ffffff; /* Weißer Text beim Klicken */
+}
+
+#team-button {
+    padding: 10px 40px;
+    font-size: 1.5em;
+    font-family: Papryus, cursive;
+    top: 85%;
+    left: 15%;
+    color: black; /* Schriftfarbe */
+    background-color:white; /* Hintergrundfarbe */
+    border: 2px solid black; /* Rahmen des Buttons */
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+
 }
 
 /* Responsive design */
