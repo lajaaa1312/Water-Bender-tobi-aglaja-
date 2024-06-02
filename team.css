@@ -4,11 +4,12 @@ body, html {
     padding: 0;
     width: 100%;
     height: 100%;
-    font-family: 'Hakturus', Arial, sans-serif;
-    background: url('assets/WEBASSETS/Avatar_world_map_EDITED 1.png') no-repeat center center fixed;
+    font-family: 'verdana', Arial, sans-serif;
     background-size: contain;
     color: #004d40;
 }
+
+
 
 /* Container für die Teamseite */
 .team-container {
@@ -17,16 +18,16 @@ body, html {
     padding: 20px;
     background: rgba(255, 255, 255, 0.9); /* Etwas transparenter weißer Hintergrund */
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
     text-align: center;
 }
 
 /* Überschriften */
 .team-container h1 {
-    font-size: 2.5em;
+    font-size: 5em;
     margin-bottom: 20px;
-    font-family: 'Papyrus', cursive;
-    color: #004d40;
+    font-family: 'Hakturus', cursive;
+    color: #1c1c1c;
 }
 
 /* Flexbox für Teammitglieder */
@@ -39,9 +40,9 @@ body, html {
 
 /* Stil für jedes Teammitglied */
 .team-member {
-    background: rgba(224, 247, 250, 0.9); /* Leicht transparenter Hintergrund */
+    background: rgba(255, 255, 255,);
     padding: 20px;
-    border: 2px solid #004d40;
+    border: 2px solid #1c1c1c;
     border-radius: 10px;
     width: 250px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -53,37 +54,134 @@ body, html {
     box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
 }
 
+.team-member.tobias {
+    background-color: #1c8922;
+}
+
+.team-member.aglaja {
+    background-color: #0014e0;
+}
+
 /* Bild des Teammitglieds */
 .team-member img {
-    width: 100%;
-    height: auto;
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    border: 3px solid #004d40;
+    border: 3px solid #1c1c1c;
     margin-bottom: 15px;
 }
 
+.team-member.aglaja img {
+
+    border: 3px solid white;
+}
+
 /* Namen des Teammitglieds */
-.team-member h2 {
+.team-member.tobias h2 {
+    font-size: 2.5em;
+    margin: 10px 0;
+    font-family: 'Hakturus', cursive;
+    color: #1c1c1c;
+}
+.team-member.tobias h3 {
     font-size: 1.5em;
     margin: 10px 0;
-    font-family: 'Papyrus', cursive;
-    color: #004d40;
+    font-family: 'Hakturus', cursive;
+    color: #1c1c1c;
 }
 
 /* Beschreibung des Teammitglieds */
-.team-member p {
+.team-member.tobias p {
     font-size: 1em;
-    color: #004d40;
+    color: #1c1c1c;
+}
+
+/* Namen des Teammitglieds */
+.team-member.aglaja h2 {
+    font-size: 2.5em;
+    margin: 10px 0;
+    font-family: 'Hakturus', cursive;
+    color: #f7f7f7;
+}
+
+.team-member.aglaja h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+    font-family: 'Hakturus', cursive;
+    color: #f7f7f7;
+}
+
+/* Beschreibung des Teammitglieds */
+.team-member.aglaja p {
+    font-size: 1em;
+    color: #ffffff;
+    
+}
+
+/* Corner images */
+.corner-image {
+   
+    position:fixed;
+    width: 10%;
+    height: auto;
+    margin: 0px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.corner-image.water {
+    top: 0;
+    right: 0;
+}
+
+.corner-image.earth {
+    top: 0;
+    left: 0;
+}
+
+.corner-image.fire {
+    bottom: 0;
+    left: 0;
+}
+
+.corner-image.air {
+    bottom: 0;
+    right: 0;
+}
+
+#Back-button {
+    padding: 5px 10px;
+    font-size: 1em;
+    font-family: 'Verdana', cursive;
+    color: rgb(0, 0, 0);
+    background-color: #edc60f;
+    align-content: center;
+    border: 2px solid #1c1c1c;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+footer {
+    display: flex;
+    bottom: 0;
+    justify-content: center;
+
+    align-items: center; /* Center vertically */
+    height: 100px; /* Adjust height as needed */
+    
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+
     .team-member {
-        width: 200px;
         padding: 15px;
     }
 
     .team-member h2 {
+        object-fit: cover;
         font-size: 1.2em;
     }
 

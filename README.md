@@ -12,7 +12,7 @@ Dieses Projekt ist eine interaktive Webseite, die den Nutzern ermöglicht, durch
 ## Schwierigkeiten
 - **API-Integration**: Anfangsprobleme beim Abrufen und Darstellen der Daten von der API. Gelöst durch Debugging und die Verwendung der `fetch`-Methode.
 - **Design und Layout**: Herausforderungen beim Erstellen eines ansprechenden und modernen Designs. Mehrere Designiterationen und die letztendliche Implementierung eines flexiblen Layouts.
-- **Responsive Design**: Anpassung des Designs an verschiedene Bildschirmgrößen. Gelöst durch Media Queries und flexible Layout-Techniken.
+- **Responsive Design**: Anpassung des Designs an verschiedene Bildschirmgrößen. Gelöst durch Media Queries und flexible Layout-Techniken. Corner-Images konnten nicht responsive gemacht werden, so dass alles gut aussieht und werden deshalb auch kleinen viewports nicht angezeigt.
 - **JavaScript-Logik**: Fehler in der Frage-Logik und Ergebnisauswertung. Durch umfassendes Testen und klar strukturierte Funktionen behoben.
 - **Interaktive Elemente**: Implementierung von CSS-Animationen und interaktiven Buttons durch CSS-Transformations- und Übergangseigenschaften.
 

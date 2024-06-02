@@ -1,78 +1,145 @@
-/* CSS code with centered "Start Quiz" button */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Papyrus&family=Verdana&display=swap');
+
+/* Basic resets */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.title {
-    position: absolute;
-    top: 2%;
-    left: 5%;
-    font-size: 2em;
-    font-family: 'papyrus', cursive;
-    color: #000; /* Anpassung der Schriftfarbe nach Bedarf */
-    word-wrap: break-all;
-    width: 5%;
+body {
+    font-family: 'Verdana', sans-serif;
+    background: url('/mnt/data/Avatar_world_map Edited2.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #1c1c1c;
 }
-
-body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Papyrus', cursive;
-    background: url('assets/WEBASSETS/Avatar_world_map_EDITED 1.png') no-repeat center center fixed;
-    background-size: contain;
-}
-
 
 main {
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    color: #fff;
-    margin: 20px auto;
     max-width: 800px;
-    padding: 30px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+    border-radius: 10px;
+    box-shadow: none; /* Remove the shadow */
+}
+
+/* Landing page */
+#landing-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
     text-align: center;
+    background: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+    border-radius: 10px;
+}
+
+#start-button {
+    padding: 15px 30px;
+    font-size: 2em;
+    font-family: 'Hakturus';
+    color: rgb(0, 0, 0);
+    border: 2px solid #1c1c1c;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#start-button:hover {
+    
+    box-shadow: 2px 2px #b9b9b9;
+}
+
+footer {
+    display: flex;
+    bottom: 0;
+    justify-content: center;
+    align-items: center; /* Center vertically */
+    height: 100px; /* Adjust height as needed */
+    
+}
+
+#team-button {
+    padding: 5px 10px;
+    font-size: 1em;
+    font-family: 'Verdana', cursive;
+    color: rgb(0, 0, 0);
+    align-content: center;
+    border: 2px solid #1c1c1c;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#team-button:hover {
+    
+    box-shadow: 2px 2px #b9b9b9;
+}
+
+/* Typography */
+h1, h2 {
+    text-align: center;
+    font-family: 'Hakturus', cursive;
+    color: #1c1c1c;
 }
 
 h1 {
-    font-size: 1.5em;
-    margin: 10px 0;
-    font-family: 'Papyrus', cursive;
-    color: #004d40;
-    line-height: 1.2;
-
+    font-size: 5em;
+    padding: 40px;
 }
 
+h2 {
+    font-size: 1.5em;
+    margin-top: 20px;
+}
 
 /* Quiz section */
+
 .question {
     margin: 20px 0;
 }
 
+
+.answer {display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 40px;
+    height: auto ;
+}
+        
+
+
 .answer button {
-    background: #edc60f;
-    border: 2px solid #d90404;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-    font-size: 1em;
+    display: block;
+    width: 100%;
     margin: 10px 0;
     padding: 15px;
+    font-size: 1em;
+    cursor: pointer;
+    border: 2px solid #1c1c1c;
+    background: #ffffff;
+    color: #1c1c1c;
+    border-radius: 2px;
     transition: background 0.3s ease;
 }
 
 .answer button:hover {
-    background: #1c8922;
+    background: #c6c6c6;
 }
 
+
 /* Results section */
+.results {
+    padding: 20px;
+    border-radius: 4px;
+    color: #1c1c1c;
+    text-align: center;
+    margin-top: 20px;
+}
+
 .benders-list {
     display: flex;
     flex-wrap: wrap;
@@ -82,120 +149,63 @@ h1 {
 }
 
 .bender {
-    background: rgba(224, 247, 250, 0.9);
-    border: 2px solid #0014e0;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    padding: 20px;
+    background: #f4f4f4;
+    padding: 10px;
+    border: 2px solid #1c1c1c;
+    border-radius: 4px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 150px;
 }
 
 .bender img {
     width: 100%;
     height: auto;
-    border-radius: 4px;
+    border-radius: 2px;
 }
 
-
-/* CSS for flip animation */
-.bender {
-    position: relative;
-    cursor: pointer;
-    perspective: 1000px; /* Add perspective for 3D effect */
+/* Corner images */
+.corner-image {
+   
+    position:fixed;
+    width: 10%;
+    height: auto;
+    margin: 0px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
 }
 
-.bender:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+.corner-image.water {
+    top: 0;
+    right: 0;
 }
 
-.bender .bender-info {
-    position: absolute;
+.corner-image.earth {
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden; /* Hide the backside of the card */
-    transition: transform 0.6s ease; /* Smooth transition */
 }
 
-.bender .bender-info.back {
-    transform: rotateY(180deg); /* Rotate to show backside */
+.corner-image.fire {
+    bottom: 0;
+    left: 0;
 }
 
-.bender .bender-info.front {
-    transform: rotateY(0deg); /* Initial state */
+.corner-image.air {
+    bottom: 0;
+    right: 0;
 }
 
-.bender .bender-info.front,
-.bender .bender-info.back {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-/* Add hover effect */
-.bender:hover .bender-info.front {
-    transform: rotateY(-180deg); /* Rotate to show backside on hover */
-}
-
-.bender:hover .bender-info.back {
-    transform: rotateY(0deg); /* Rotate back to show frontside on hover */
-}
-
-
-/* Center Start Quiz button */
-
-
-#start-button {
-    position: absolute;
-    top: 40%;
-    left: 55%;
-    padding: 10px 40px;
-    font-size: 1.5em;
-    font-family: Papryus, cursive;
-    color: black; /* Schriftfarbe */
-    background-color:white; /* Hintergrundfarbe */
-    border: 2px solid black; /* Rahmen des Buttons */
-    text-align: center;
-    cursor: pointer;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-#start-button:hover, #team-button:hover {
-    background: linear-gradient(135deg, #1c8922, #0014e0);
-    transform: translateY(-5px);
-    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.5);
-}
-
-
-#start-button:active {
-    transform: translateY(0);
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(135deg, #004d40, #004d40); /* Einheitliche Farbe beim Klicken */
-    color: #ffffff; /* Weißer Text beim Klicken */
-}
-
-#team-button {
-    padding: 10px 40px;
-    font-size: 1.5em;
-    font-family: Papryus, cursive;
-    top: 85%;
-    left: 15%;
-    color: black; /* Schriftfarbe */
-    background-color:white; /* Hintergrundfarbe */
-    border: 2px solid black; /* Rahmen des Buttons */
-    text-align: center;
-    cursor: pointer;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-
-}
 
 /* Responsive design */
+
+@media (max-width: 950px) {
+   
+
+    .corner-image {
+        display: none;
+    }
+
+
+}
 @media (max-width: 768px) {
     main {
         margin: 10px;
@@ -206,16 +216,23 @@ h1 {
         padding: 10px;
         font-size: 0.9em;
     }
+
+    .corner-image {
+        display: none;
+    }
+
+
 }
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 2em;
+        font-size: 1em;
     }
 
     h2 {
-        font-size: 1.2em;
+        font-size: 1em;
     }
+
 
     .answer button {
         padding: 8px;
@@ -224,5 +241,10 @@ h1 {
 
     .bender {
         width: 120px;
+    }
+
+    .corner-image {
+        display: none;
+    
     }
 }
