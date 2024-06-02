@@ -12,10 +12,51 @@ let scoreEarth = 0;
 let scoreAir = 0;
 let questionCounter = 0;
 
-const quizzContainer = document.querySelector("#quizz");
 const landingPage = document.getElementById('landing-page');
 const quizContainer = document.getElementById('quiz-container');
 const startButton = document.getElementById('start-button');
+
+
+// Function to randomize the start button color
+function randomizeButtonColor() {
+    const colors = ['#edc60f', '#d90404', '#1c8922', '#0014e0'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    const startButton = document.getElementById('start-button');
+    startButton.style.backgroundColor = randomColor;
+
+    // Select h2 after it has been added to the DOM
+    const textColor = document.querySelector('#start-button');
+
+    // Set color of h2 based on randomColor
+    if (randomColor === '#0014e0' || randomColor === '#d90404') {
+        textColor.style.color = 'white';
+    } else {
+        textColor.style.color = ''; // Reset color to default if not #0014e0 or #d90404
+    }
+}
+
+// Call the function to randomize the button color on page load
+document.addEventListener('DOMContentLoaded', () => {
+    randomizeButtonColor();
+});
+
+
+
+// Function to randomize the start button color
+function randomizeTeamButtonColor() {
+    const colors = ['#edc60f', '#d90404', '#1c8922', '#0014e0'];
+    const randomTeamColor = colors[Math.floor(Math.random() * colors.length)];
+    const teamButton = document.getElementById('team-button');
+    teamButton.style.backgroundColor = randomTeamColor;
+
+}
+
+// Call the function to randomize the button color on page load
+document.addEventListener('DOMContentLoaded', () => {
+    randomizeTeamButtonColor();
+});
+
+
 
 startButton.addEventListener('click', () => {
     landingPage.style.display = 'none';
@@ -24,7 +65,6 @@ startButton.addEventListener('click', () => {
 });
 
 const quizz = document.querySelector("#quizz");
-
 
 
 let questions = [
@@ -151,25 +191,72 @@ function getFinalElement() {
 
 
 function displayResults(element, data) {
+    // Filter out characters that don't have a photoUrl
+    let filteredData = data.filter(bender => bender.photoUrl);
+
+    //add n to air and earth for grammar
     let n = (element === 'air' || element === 'earth') ? 'n' : '';
 
     let resultElement = document.createElement('div');
+    resultElement.classList.add('results');
     resultElement.innerHTML = `<h1>You're a${n} ${element}bender</h1>`;
 
     let bendersList = '<h2>Your fellow benders:</h2><div class="benders-list">';
-    data.forEach(bender => {
+    filteredData.forEach(bender => {
         bendersList += `
             <div class="bender">
                 <img src="${bender.photoUrl}" alt="${bender.name}">
-                <p> ${bender.name}</p>
-            
+                <p>${bender.name}</p>
             </div>
         `;
     });
     bendersList += '</div>';
-    
+
     resultElement.innerHTML += bendersList;
     quizz.appendChild(resultElement);
+
+    // Set background color based on element
+    let bgColor = '';
+    switch (element) {
+        case 'air':
+            bgColor = '#edc60f';
+            break;
+        case 'fire':
+            bgColor = '#d90404';
+            break;
+        case 'earth':
+            bgColor = '#1c8922';
+            break;
+        case 'water':
+            bgColor = '#0014e0';
+            break;
+    }
+    resultElement.style.backgroundColor = bgColor;
+
+    const teamButtonColor = document.getElementById('team-button');
+    teamButtonColor.style.backgroundColor = bgColor;
+
+
+    // Select h1 and h2 after they have been added to the DOM
+    const title = resultElement.querySelector('h1');
+    const subtitle = resultElement.querySelector('h2');
+
+    // Set color of h1 and h2 based on bgColor
+    if (bgColor === '#0014e0' || bgColor === '#d90404') {
+        title.style.color = 'white';
+        subtitle.style.color = 'white';
+    }
+
+    console.log('You are a', element, 'bender');
+
+      // Replace the other images with the image corresponding to the element
+      const images = document.querySelectorAll('.corner-image');
+      images.forEach(image => {
+            image.src = `assets/WEBASSETS/${element} symbol square.png`; // replace with the correct image path
+          
+      });
+
+    
 }
 
 
@@ -185,5 +272,3 @@ async function fetchData(charactersUrl) {
         console.log(error);
     }
 }
-
-
