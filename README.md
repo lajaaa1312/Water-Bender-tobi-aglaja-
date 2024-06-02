@@ -15,8 +15,9 @@ Dieses Projekt ist eine interaktive Webseite, die den Nutzern ermöglicht, durch
 - **Responsive Design**: Anpassung des Designs an verschiedene Bildschirmgrößen. Gelöst durch Media Queries und flexible Layout-Techniken. Corner-Images konnten nicht responsive gemacht werden, so dass alles gut aussieht und werden deshalb auch kleinen viewports nicht angezeigt.
 - **JavaScript-Logik**: Fehler in der Frage-Logik und Ergebnisauswertung. Durch umfassendes Testen und klar strukturierte Funktionen behoben.
 - **Interaktive Elemente**: Implementierung von CSS-Animationen und interaktiven Buttons durch CSS-Transformations- und Übergangseigenschaften.
+- **Ausbildungsserver issues**: Ausbildungsserver synchronisiert nicht richtig
 
 ## Benutzte Ressourcen
 - **API**: [Last Airbender API](https://last-airbender-api.fly.dev)
 - **Editor**: Visual Studio Code mit Live Server Erweiterung
-- **CSS und JavaScript**: MDN Web Docs, W3Schools, diverse Online-Tutorials
+- **CSS und JavaScript**: MDN Web Docs, W3Schools, diverse Online-Tutorials, ChatGPT
